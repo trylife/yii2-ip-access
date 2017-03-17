@@ -21,7 +21,7 @@
   },
   "autoload": {
     "psr-4": {
-      "trylife\\yii2Xss\\": ""
+      "trylife\\ipAccess\\": ""
     }
   }
 }
