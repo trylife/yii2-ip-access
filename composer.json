@@ -1,0 +1,27 @@
+{
+  "name": "trylife/yii2-ip-access",
+  "description": "yii2 yii2-ip yii2-ip-access",
+  "type": "library",
+  "keywords": [
+    "yii2",
+    "vue",
+    "trylife",
+    "yii2-ip",
+    "yii2-ip-access"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "trylife",
+      "email": "trylife@qq.com"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "*",
+  },
+  "autoload": {
+    "psr-4": {
+      "trylife\\yii2Xss\\": ""
+    }
+  }
+}
