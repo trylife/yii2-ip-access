@@ -1,6 +1,6 @@
 <?php
 
-namespace trylife\ipAccess;
+namespace trylife\ipAccess\models;
 
 use Yii;
 
@@ -25,7 +25,7 @@ class IpAccess extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{ip_access}}';
+        return '{{%ip_access}}';
     }
 
     public static function addIpAccess()
@@ -34,11 +34,16 @@ class IpAccess extends \yii\db\ActiveRecord
         /* @var trylife\ipAccess\models\IpAccess $ipAccessModel */
         if ($ipAccessModel = $instance->hasActiveRecord()) {
             $ipAccessModel->endAt = $instance->time + $instance->endurance;
-            return $ipAccessModel->save();
+            if ($ipAccessModel->save()) {
+                return $ipAccessModel->success();
+            }
         }
         $instance->createdAt = time();
         $instance->endAt = $instance->time + $instance->endurance;
-        return $instance->save();
+        if ($instance->save()) {
+            return $instance->success();
+        }
+
     }
 
     public function hasActiveRecord()
@@ -49,6 +54,14 @@ class IpAccess extends \yii\db\ActiveRecord
             ])
             ->andWhere(['<', 'endAt', time() + $this->endurance])
             ->one();
+    }
+
+    protected function success()
+    {
+        return [
+            'code' => 100000,
+            'message' => 'success',
+        ];
     }
 
     public static function hasIpAccess()

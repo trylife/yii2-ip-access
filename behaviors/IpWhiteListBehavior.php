@@ -1,6 +1,6 @@
 <?php
 
-namespace common\access;
+namespace trylife\ipAccess\behaviors;
 
 use trylife\ipAccess\models\IpAccess;
 use Yii;
@@ -31,7 +31,6 @@ class IpWhiteListBehavior extends Behavior
     {
         $route = Yii::$app->requestedAction ? Yii::$app->requestedAction->getUniqueId() : Yii::$app->requestedRoute;
         $ip = Yii::$app->getRequest()->getUserIP();
-
         if (!IpAccess::hasIpAccess() && !in_array($ip, $this->allowIps) && !in_array($route, $this->allowRoutes)) {
             Yii::$app->response->statusCode = 403;
             echo '403: You do not have access rights!';

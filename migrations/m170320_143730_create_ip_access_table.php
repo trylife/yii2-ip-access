@@ -2,9 +2,9 @@
 
 use yii\db\Migration;
 
-class m170117_143730_create_ip_access_table extends Migration
+class m170320_143730_create_ip_access_table extends Migration
 {
-    const TABLE_NAME = '{{ip_access}}';
+    const TABLE_NAME = '{{%ip_access}}';
 
     public function up()
     {

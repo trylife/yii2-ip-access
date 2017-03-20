@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\modules\tools\controllers;
+namespace trylife\IpAccess\controllers;
 
 use trylife\ipAccess\models\IpAccess;
 use Yii;
@@ -12,7 +12,10 @@ class PingController extends \yii\rest\Controller
     public function actionPing($accessKey)
     {
         if ($accessKey != $this->accessKey) {
-            return [1, false];
+            return [
+                'code' => 0,
+                'message' => 'no access'
+            ];
         }
 
         return IpAccess::addIpAccess();
